@@ -1,0 +1,29 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>gu-yt-request-parser</title>
+  <script src="index.js"></script>
+  <script>
+      const parse = () => {
+          const parsed = parseYouTubeRequest(document.getElementById("request").value);
+          document.getElementById("parsed").value = parsed;
+      }
+  </script>
+</head>
+<body>
+    <h1><i>gu-yt-request-parser</i></h1>
+    <div id="request-container" >
+        <textarea style="width: 90vw;" id="request" rows="10" cols="100" placeholder="Enter your YouTube embed request here..."></textarea>
+    </div>
+    <div>
+        <button style="margin-top: 1rem;" type="button" onclick="parse()">Parse</button>
+    </div>
+    <div>
+        <textarea style="width: 90vw; margin-top: 1rem;" id="parsed" rows="80" cols="100" placeholder="Output..."></textarea>
+    </div>
+</body>
+</html>
