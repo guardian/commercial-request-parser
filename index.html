@@ -70,7 +70,7 @@
             const truncate = [...event.target.elements].filter(t => t.id === "radio_truncate")[0].checked;
             const youtube = [...event.target.elements].filter(t => t.id === "radio_type_youtube")[0].checked;
             const parsed = youtube
-                ? parseYouTubeRequest(document.getElementById("request").value)
+                ? parseYouTubeRequest(document.getElementById("request").value, truncate)
                 : "noop";
             document.getElementById("parsed").value = parsed;
             event.preventDefault();
