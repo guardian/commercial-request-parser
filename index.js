@@ -1,10 +1,14 @@
 const truncateString = (str) =>
-    str.length <= 80 ? str : str.substring(0, 77) + '...';
+    str.length <= 80 ? str : str.substring(0, 76) + '...';
+
+const truncateArray = (arr) =>
+    arr.length >= 10 ? arr.slice(0,9).concat("...") : arr
 
 const sortKeysAndTruncateValues = (obj) =>
     Object.keys(obj).sort((a,b) => a.localeCompare(b)).reduce((result, key) => {
         const value = obj[key];
-        result[key] = typeof value === "string" ? truncateString(value) : value;
+        result[key] = typeof value === "string" ? truncateString(value)
+                        : Array.isArray(value) ? truncateArray(value) : value;
         return result;
     }, {});
 
