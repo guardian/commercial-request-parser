@@ -38,7 +38,8 @@
             id="request"
             rows="1"
             cols="50"
-            placeholder="Enter your YouTube embed request here...">
+            placeholder="Enter your YouTube embed request here..."
+        >
         </textarea>
     </div>
     <div>
@@ -62,16 +63,18 @@
             rows="80"
             cols="50"
             wrap="soft"
-            placeholder="Output...">
+            placeholder="Output..."
+        >
         </textarea>
     </div>
     <script>
         function logSubmit(event) {
             const truncate = [...event.target.elements].filter(t => t.id === "radio_truncate")[0].checked;
             const youtube = [...event.target.elements].filter(t => t.id === "radio_type_youtube")[0].checked;
+            const requestString = document.getElementById("request").value;
             const parsed = youtube
-                ? parseYouTubeRequest(document.getElementById("request").value, truncate)
-                : "noop";
+                ? parseYouTubeRequest(requestString, truncate)
+                : parseGAMRequest(requestString, truncate);
             document.getElementById("parsed").value = parsed;
             event.preventDefault();
         }
