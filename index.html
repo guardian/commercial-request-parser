@@ -48,12 +48,22 @@
         </textarea>
     </div>
     <div>
-        <button
-            type="button"
-            onclick="parse()"
-        >
-            Parse
-        </button>
+        <form action="/action_page.php">
+            <div>
+                <input type="radio" id="radio_type_youtube" name="radio_request_type" value="radio_type_youtube" checked>
+                <label for="radio_type_youtube">YouTube embed request</label>
+                <input type="radio" id="radio_type_page_targeting" name="radio_request_type" value="radio_type_page_targeting">
+                <label for="radio_type_page_targeting">Page Targeting</label>
+            </div>
+            <input type="checkbox" id="radio_truncate" name="radio_truncate" value="radio_truncate" checked>
+            <label for="radio_truncate">Truncate long values</label><br>
+            <button
+                type="button"
+                onclick="parse()"
+            >
+                Parse
+            </button>    
+        </form>
     </div>
     <div>
         <textarea
