@@ -28,6 +28,14 @@
         overflow:scroll;
         margin: 1rem 0;
     }
+    #error {
+        color: red;
+        font-style: italic;
+    }
+    .light {
+        color: darkgray;
+        font-style: italic;
+    }
   </style>
   <script src="index.js"></script>
 </head>
@@ -38,23 +46,25 @@
             id="request"
             rows="1"
             cols="50"
-            placeholder="Enter your YouTube embed request here..."
         >
         </textarea>
     </div>
     <div>
         <form id="form" action="#">
-            <div>
-                <input type="radio" id="radio_type_youtube" name="radio_request_type" value="radio_type_youtube" checked>
-                <label for="radio_type_youtube">YouTube embed request</label>
-                <input type="radio" id="radio_type_page_targeting" name="radio_request_type" value="radio_type_page_targeting">
-                <label for="radio_type_page_targeting">Page Targeting</label>
-            </div>
+            <input type="radio" id="radio_type_youtube" name="radio_request_type" value="radio_type_youtube" checked>
+            <label for="radio_type_youtube">YouTube embed request <span class="light">(e.g. https://www.youtube.com/embed/3LtcTkRMI1w?embed_config...)</span></label>
+            <br />
+            <input type="radio" id="radio_type_page_targeting" name="radio_request_type" value="radio_type_page_targeting">
+            <label for="radio_type_page_targeting">Page Targeting <span class="light">(e.g. https://securepubads.g.doubleclick.net/gampad/ads?...)</span></label>
+            <br />
             <input type="checkbox" id="radio_truncate" name="radio_truncate" value="radio_truncate" checked>
             <label for="radio_truncate">Truncate long values</label><br>
-            <button type="submit">
-                Parse
-            </button>    
+            <div>
+                <button type="submit">
+                    Parse
+                </button>    
+                <span id="error"></span>
+            </div>
         </form>
     </div>
     <div>
@@ -63,20 +73,30 @@
             rows="80"
             cols="50"
             wrap="soft"
-            placeholder="Output..."
         >
         </textarea>
     </div>
     <script>
         function logSubmit(event) {
+            event.preventDefault();
+            document.getElementById("error").innerHTML = "";
+            const requestString = document.getElementById("request").value.trim();
             const truncate = [...event.target.elements].filter(t => t.id === "radio_truncate")[0].checked;
             const youtube = [...event.target.elements].filter(t => t.id === "radio_type_youtube")[0].checked;
-            const requestString = document.getElementById("request").value;
+            if (youtube && !requestString.startsWith("https://www.youtube.com/embed/")) {
+                document.getElementById("parsed").value = "";
+                document.getElementById("error").innerHTML = "Request string does not look like a YouTube embed request!";
+                return;
+            }
+            if (!youtube && !requestString.startsWith("https://securepubads.g.doubleclick.net/")) {
+                document.getElementById("parsed").value = "";
+                document.getElementById("error").innerHTML = "Request string does not look like a GAM request!";
+                return;
+            }
             const parsed = youtube
                 ? parseYouTubeRequest(requestString, truncate)
                 : parseGAMRequest(requestString, truncate);
             document.getElementById("parsed").value = parsed;
-            event.preventDefault();
         }
         const form = document.getElementById('form');
         form.addEventListener('submit', logSubmit);
