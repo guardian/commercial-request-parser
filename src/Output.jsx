@@ -4,7 +4,6 @@ import 'react-tabs/style/react-tabs.css';
 import './Output.css'
 
 function Output({ parsed: [ parsed1, parsed2 ] }) {
-    console.log('hello', parsed1, parsed2);
     return (
         <div className="output-container">
             <Tabs>
