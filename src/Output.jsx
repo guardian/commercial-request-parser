@@ -16,6 +16,7 @@ function Output({ parsed: [ parsed1, parsed2 ] }) {
                     value={parsed1}
                 >   
                 </textarea>
+                <div onClick={() => {navigator.clipboard.writeText(parsed1)}}>📋</div>
             </div>
             <div className="output-request-container">
                 <div>2</div>
@@ -27,6 +28,7 @@ function Output({ parsed: [ parsed1, parsed2 ] }) {
                     value={parsed2}
                 >
                 </textarea>
+                <div onClick={() => {navigator.clipboard.writeText(parsed2)}}>📋</div>
             </div>
             <div className="diff-container">
                 <hr />
@@ -37,7 +39,6 @@ function Output({ parsed: [ parsed1, parsed2 ] }) {
                     showDiffOnly={true}
                 />
             </div>
-
         </div>
     )
 }
