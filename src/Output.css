@@ -2,7 +2,7 @@
     width: 100%;
 }
 
-.output-container > hr {
+.output-container {
     margin-left: 1.25rem;
     margin-top: 1rem;
 }
@@ -10,13 +10,6 @@
 .output-request-container {
     display: flex;
     align-items: center;
-    margin-left: 0.25rem;
-    margin-top: 1rem;
-}
-
-.output-request-container:first-child > div {
-    margin-right: 0.5rem;
-    font-style: italic;
 }
 
 .diff-container {
