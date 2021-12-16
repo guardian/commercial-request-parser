@@ -17,12 +17,11 @@ function Output({ parsed: [ parsed1, parsed2 ] }) {
                 <TabPanel>
                     <div className="output-request-container">
                         <textarea
-                            className="output"
-                            id="output-request-1"
+                            className="output-request"
                             rows="10"
                             cols="50"
                             value={parsed1}
-                        >   
+                        > 
                         </textarea>
                         <div onClick={() => {navigator.clipboard.writeText(parsed1)}}>📋</div>
                     </div>
@@ -30,8 +29,7 @@ function Output({ parsed: [ parsed1, parsed2 ] }) {
                 <TabPanel>
                     <div className="output-request-container">
                         <textarea
-                            className="output"
-                            id="output-2"
+                            className="output-request"
                             rows="10"
                             cols="50"
                             value={parsed2}
