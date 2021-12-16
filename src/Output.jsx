@@ -47,6 +47,9 @@ function Output({ parsed: [ parsed1, parsed2 ] }) {
                             newValue={parsed2}
                             splitView={true}
                             showDiffOnly={true}
+                            leftTitle="Parsed 1"
+                            rightTitle="Parsed 2"
+                            codeFoldMessageRenderer={(number) => <div className="no-diff-msg">Expand {number} lines (no diff) ...</div>}
                         />
                     </div>
                 </TabPanel>
