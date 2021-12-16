@@ -24,8 +24,8 @@ input ~ label {
 .request-container {
     display: flex;
     align-items: center;
-    margin-left: 0.25rem;
     margin-top: 0.5rem;
+    margin-left: -0.5rem;
 }
 
 .request-container > div {
@@ -34,7 +34,7 @@ input ~ label {
 }
 
 form {
-    margin-left: 1.25rem;    
+    margin-left: 1.25rem;
     margin-top: 1rem;
 }
 
