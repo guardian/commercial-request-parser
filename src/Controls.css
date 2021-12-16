@@ -1,0 +1,43 @@
+#error {
+    color: red;
+    font-style: italic;
+}
+
+#controls-container, #parse-button-container {
+    margin: 1rem 0;
+}
+
+.request {
+    width: 100%;
+}
+
+input ~ label {
+    margin-left: 0.5rem;
+}
+
+.light {
+    color: darkgray;
+    font-size: 10pt;
+    font-style: italic;
+}
+
+.request-container {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+    margin-left: -0.5rem;
+}
+
+.request-container > div {
+    margin-right: 0.5rem;
+    font-style: italic;
+}
+
+form {
+    margin-left: 1.25rem;
+    margin-top: 1rem;
+}
+
+#controls {
+    margin-top: 1rem;
+}

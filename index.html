@@ -1,107 +1,13 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="google" content="notranslate" />
-  <title>gu-yt-request-parser</title>
-  <style>
-    body {
-        margin: 1rem;
-    }
-    #request {
-        width: 40vw;
-    }
-    #parsed {
-        width: 40vw;
-    }
-    button {
-        margin-top: 1rem;
-    }
-    textarea {
-        white-space:nowrap;
-        overflow:scroll;
-    }
-    #error {
-        color: red;
-        font-style: italic;
-    }
-    .light {
-        color: darkgray;
-        font-style: italic;
-    }
-    #controls-container {
-        margin-top: 1rem;
-    }
-    #parsed-container {
-        width: 40vw;
-        margin-top: 1rem;
-    }
-  </style>
-  <script src="index.js"></script>
-</head>
-<body>
-    <h1><i>YouTube & GAM Request Parser</i></h1>
-    <div id="request-container" >
-        <textarea
-            id="request"
-            rows="1"
-            cols="50"
-        >
-        </textarea>
-    </div>
-    <div id="controls-container">
-        <form id="form" action="#">
-            <input type="radio" id="radio_type_youtube" name="radio_request_type" value="radio_type_youtube" checked>
-            <label for="radio_type_youtube">YouTube embed request <span class="light">(e.g. https://www.youtube.com/embed/3LtcTkRMI1w?embed_config...)</span></label>
-            <br />
-            <input type="radio" id="radio_type_page_targeting" name="radio_request_type" value="radio_type_page_targeting">
-            <label for="radio_type_page_targeting">GAM Page Targeting <span class="light">(e.g. https://securepubads.g.doubleclick.net/gampad/ads?...)</span></label>
-            <br />
-            <input type="checkbox" id="radio_truncate" name="radio_truncate" value="radio_truncate" checked>
-            <label for="radio_truncate">Truncate long values</label><br>
-            <div>
-                <button type="submit">
-                    Parse
-                </button>    
-                <span id="error"></span>
-            </div>
-        </form>
-    </div>
-    <div id="parsed-container">
-        <textarea
-            id="parsed"
-            rows="80"
-            cols="50"
-            wrap="soft"
-        >
-        </textarea>
-    </div>
-    <script>
-        function logSubmit(event) {
-            event.preventDefault();
-            document.getElementById("error").innerHTML = "";
-            const requestString = document.getElementById("request").value.trim();
-            const truncate = [...event.target.elements].filter(t => t.id === "radio_truncate")[0].checked;
-            const youtube = [...event.target.elements].filter(t => t.id === "radio_type_youtube")[0].checked;
-            if (youtube && !requestString.startsWith("https://www.youtube.com/embed/")) {
-                document.getElementById("parsed").value = "";
-                document.getElementById("error").innerHTML = "Request string does not look like a YouTube embed request!";
-                return;
-            }
-            if (!youtube && !requestString.startsWith("https://securepubads.g.doubleclick.net/")) {
-                document.getElementById("parsed").value = "";
-                document.getElementById("error").innerHTML = "Request string does not look like a GAM request!";
-                return;
-            }
-            const parsed = youtube
-                ? parseYouTubeRequest(requestString, truncate)
-                : parseGAMRequest(requestString, truncate);
-            document.getElementById("parsed").value = parsed;
-        }
-        const form = document.getElementById('form');
-        form.addEventListener('submit', logSubmit);
-    </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/gu.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Request Differ</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

@@ -1,0 +1,28 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+textarea {
+  white-space:nowrap;
+  overflow:scroll;
+  font-family: monospace;
+  font-size: inherit;
+}
+
+button {
+  font-size: inherit;
+}
