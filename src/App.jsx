@@ -1,3 +1,7 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './App.css'
+
 import { useState } from 'react'
 import Controls from './Controls'
 import Output from './Output'
@@ -15,4 +19,9 @@ function App() {
   )
 }
 
-export default App
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+)
