@@ -1,6 +1,5 @@
 .output, #diff {
-    width: 90vw;
-    max-width: 60rem;
+    width: 100%;
 }
 
 .output-container > hr {

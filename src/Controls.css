@@ -8,9 +8,7 @@
 }
 
 .request {
-    width: 90vw;
-    max-width: 60rem;
-    /* height: 2.5ex; */
+    width: 100%;
 }
 
 input ~ label {

@@ -1,3 +1,4 @@
+import ReactDiffViewer from 'react-diff-viewer';
 import './Output.css'
 
 function Output({ parsed: [ parsed1, parsed2 ] }) {
@@ -29,13 +30,14 @@ function Output({ parsed: [ parsed1, parsed2 ] }) {
             </div>
             <div className="diff-container">
                 <hr />
-                <textarea
-                    id="diff"
-                    rows="20"
-                    cols="50"
-                >
-                </textarea>
+                <ReactDiffViewer
+                    oldValue={parsed1}
+                    newValue={parsed2}
+                    splitView={false}
+                    showDiffOnly={true}
+                />
             </div>
+
         </div>
     )
 }
