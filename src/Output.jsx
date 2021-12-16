@@ -43,7 +43,7 @@ function Output({ parsed: [ parsed1, parsed2 ] }) {
                         <ReactDiffViewer
                             oldValue={parsed1}
                             newValue={parsed2}
-                            splitView={false}
+                            splitView={true}
                             showDiffOnly={true}
                         />
                     </div>
