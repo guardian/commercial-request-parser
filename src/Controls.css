@@ -7,6 +7,10 @@
     margin: 1rem 0;
 }
 
+#controls {
+    margin-top: 1rem;
+}
+
 .request {
     width: 100%;
 }
@@ -25,19 +29,9 @@ input ~ label {
     display: flex;
     align-items: center;
     margin-top: 0.5rem;
-    margin-left: -0.5rem;
 }
 
 .request-container > div {
     margin-right: 0.5rem;
     font-style: italic;
-}
-
-form {
-    margin-left: 1.25rem;
-    margin-top: 1rem;
-}
-
-#controls {
-    margin-top: 1rem;
 }

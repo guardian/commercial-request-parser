@@ -4,7 +4,6 @@
 }
 
 .output-container {
-    margin-left: 1.25rem;
     margin-top: 1rem;
 }
 
@@ -18,10 +17,6 @@
 
 .diff-container {
     margin-top: 1rem;
-}
-
-.diff-container > hr {
-    margin: 1rem 0;
 }
 
 .diff-container > table {

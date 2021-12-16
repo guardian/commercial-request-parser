@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import './App.css'
 import Controls from './Controls'
 import Output from './Output'
 
 function App() {
   const [parsed, setParsed] = useState([])
   return (
-    <div className="App">
+    <div className="app">
       <header>
         YouTube & GAM Request Differ
       </header>

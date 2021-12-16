@@ -26,3 +26,15 @@ textarea {
 button {
   font-size: inherit;
 }
+
+header {
+  font-size: 2rem;
+}
+
+.app {
+  background-color: #282c34;
+  min-height: calc(100vh - 2rem);
+  font-size: calc(1rem);
+  color: white;
+  padding: 2rem;
+}
