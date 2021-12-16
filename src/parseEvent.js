@@ -16,13 +16,13 @@ function parseEvent(event) {
 
     if (request1 && request1.trim().length > 0) {
         parsed1 = youtube
-            ? parseYouTubeRequest(request1, truncateValues)
-            : parseGAMRequest(request1, truncateValues);
+            ? parseYouTubeRequest(request1, truncateValues, ignoreValues)
+            : parseGAMRequest(request1, truncateValues, ignoreValues);
     }
     if (request2 && request2.trim().length > 0) {
         parsed2 = youtube
-        ? parseYouTubeRequest(request2, truncateValues)
-        : parseGAMRequest(request2, truncateValues);
+        ? parseYouTubeRequest(request2, truncateValues, ignoreValues)
+        : parseGAMRequest(request2, truncateValues, ignoreValues);
     }
     return [parsed1, parsed2]
 }
