@@ -89,3 +89,8 @@ const parseGAMRequest = (request, truncate) => {
     requestSummary = sortKeysAndTruncateValues(requestSummary, truncate);
     return JSON.stringify(requestSummary, null ,2);
 }
+
+export {
+    parseGAMRequest,
+    parseYouTubeRequest,
+}

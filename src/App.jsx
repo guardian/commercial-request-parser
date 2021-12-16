@@ -1,15 +1,17 @@
 import { useState } from 'react'
-import logo from './logo.svg'
 import './App.css'
+import Controls from './Controls'
+import Output from './Output'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [parsed, setParsed] = useState([])
   return (
     <div className="App">
-      <header className="App-header">
-        YouTube & GAM Request Parser
+      <header>
+        YouTube & GAM Request Differ
       </header>
+      <Controls setParsed={setParsed} />
+      <Output parsed={parsed} />
     </div>
   )
 }
