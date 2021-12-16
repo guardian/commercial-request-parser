@@ -13,29 +13,31 @@ function Output({ parsed: [ parsed1, parsed2 ] }) {
                     <Tab>Parsed 2</Tab>
                     <Tab>Diff</Tab>
                 </TabList>
-
                 <TabPanel>
                     <div className="output-request-container">
                         <textarea
                             className="output-request"
+                            readOnly
                             rows="10"
                             cols="50"
                             value={parsed1}
                         > 
+                            {parsed1}
                         </textarea>
-                        <div onClick={() => {navigator.clipboard.writeText(parsed1)}}>📋</div>
+                        <div class="copy" title="Copy" onClick={() => {navigator.clipboard.writeText(parsed1)}}>📋</div>
                     </div>
                 </TabPanel>
                 <TabPanel>
                     <div className="output-request-container">
                         <textarea
                             className="output-request"
+                            readOnly
                             rows="10"
                             cols="50"
                             value={parsed2}
                         >
                         </textarea>
-                        <div onClick={() => {navigator.clipboard.writeText(parsed2)}}>📋</div>
+                        <div class="copy" title="Copy" onClick={() => {navigator.clipboard.writeText(parsed2)}}>📋</div>
                     </div>
                 </TabPanel>
                 <TabPanel>
