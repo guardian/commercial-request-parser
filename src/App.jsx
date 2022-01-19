@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="app">
       <header>
-        YouTube & GAM Request Differ
+        Commercial Request Differ
       </header>
       <Controls setParsed={setParsed} />
       <Output parsed={parsed} />
