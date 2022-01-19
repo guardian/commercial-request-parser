@@ -32,7 +32,7 @@ header {
 }
 
 .app {
-  background-color: #282c34;
+  background-color: rgb(5,41,98);
   min-height: calc(100vh - 2rem);
   font-size: calc(1rem);
   color: white;
