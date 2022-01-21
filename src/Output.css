@@ -5,15 +5,11 @@
 }
 
 .output-container {
-    margin-top: 1rem;
+    padding: var(--main-padding);
 }
 
 .output-request-container {
     display: flex;
-}
-
-.diff-container {
-    margin-top: 1rem;
 }
 
 .diff-container > table {

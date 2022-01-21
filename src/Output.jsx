@@ -23,7 +23,7 @@ function Output({ parsed: [ parsed1, parsed2 ] }) {
                         > 
                             {parsed1}
                         </textarea>
-                        <div class="copy" title="Copy" onClick={() => {navigator.clipboard.writeText(parsed1)}}>📋</div>
+                        <div className="copy" title="Copy" onClick={() => {navigator.clipboard.writeText(parsed1)}}>📋</div>
                     </div>
                 </TabPanel>
                 <TabPanel>

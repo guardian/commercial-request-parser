@@ -4,7 +4,7 @@
 }
 
 #controls-container, #parse-button-container {
-    margin: 1rem 0;
+    padding: var(--main-padding);
 }
 
 #controls {
@@ -34,4 +34,8 @@ input ~ label {
 .request-container > div {
     margin-right: 0.5rem;
     font-style: italic;
+}
+
+#parse-button-container > button {
+    height: 2rem;
 }
