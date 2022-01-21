@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="app">
       <header>
-        Commercial Request Differ
+        Commercial Request Parser
       </header>
       <Controls setParsed={setParsed} />
       <Output parsed={parsed} />
