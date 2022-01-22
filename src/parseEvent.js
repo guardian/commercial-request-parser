@@ -3,12 +3,26 @@ import {
     parseYouTubeRequest,
 } from './parser'
 
+function isYouTubeRequest(request) {
+    if (request.startsWith("https://www.youtube.com/embed/")) {
+        return true;
+    }
+}
+
+function isGAMRequest(request) {
+    if (request.startsWith("https://securepubads.g.doubleclick.net/gampad/ads")) {
+        return true;
+    }
+}
+
 function parseRequest(request, isYouTube, truncateValues, ignoreValues) {
     if (request && request.trim().length > 0) {
-        if (isYouTube) {
+        if (isYouTubeRequest(request)) {
             return parseYouTubeRequest(request, truncateValues, ignoreValues)
-        } else {
+        } else if (isGAMRequest(request)) {
             return parseGAMRequest(request, truncateValues, ignoreValues);  
+        } else {
+            return "";
         }
     }
     return "";
