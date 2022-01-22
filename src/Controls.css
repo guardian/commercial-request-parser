@@ -3,7 +3,7 @@
     font-style: italic;
 }
 
-#controls-container, #parse-button-container {
+#controls-container {
     padding: var(--main-padding);
 }
 
@@ -40,5 +40,16 @@ input ~ label {
 }
 
 #parse-button-container > button {
+    margin-top: 1rem;
+    width: 8rem;
     height: 2rem;
+    background: #4CAF50;
+    border: none;
+    color: rgba(255, 255, 255, 1);
+    font-weight: normal;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }

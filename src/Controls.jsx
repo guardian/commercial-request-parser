@@ -43,9 +43,7 @@ function Controls({
                     <label htmlFor="radio_truncate">Ignore values</label>
                     <br></br>
                     <div id="parse-button-container">
-                        <button type="submit">
-                            Parse
-                        </button>    
+                        <button type="submit">Parse</button>    
                         {error && <span id="error">{error}</span>}
                     </div>
                 </div>
