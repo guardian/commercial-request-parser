@@ -18,8 +18,8 @@ function Controls({
                     <textarea
                         className="request"
                         id="request-1"
-                        rows="1"
-                        cols="50"
+                        rows="10"
+                        wrap="hard"
                         >
                     </textarea>
                 </div>
@@ -28,8 +28,8 @@ function Controls({
                     <textarea
                         className="request"
                         id="request-2"
-                        rows="1"
-                        cols="50"
+                        rows="10"
+                        wrap="hard"
                     >
                     </textarea>
                 </div>
