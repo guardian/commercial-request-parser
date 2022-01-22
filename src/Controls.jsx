@@ -14,7 +14,7 @@ function Controls({
         <div id="controls-container">
             <form id="form" onSubmit={handleSubmit}>
                 <div className="request-container">
-                    <div>1</div>
+                    <div>Request 1:</div>
                     <textarea
                         className="request"
                         id="request-1"
@@ -24,7 +24,7 @@ function Controls({
                     </textarea>
                 </div>
                 <div className="request-container">
-                    <div>2</div>
+                    <div>Request 2:</div>
                     <textarea
                         className="request"
                         id="request-2"
