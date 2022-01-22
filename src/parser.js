@@ -30,7 +30,6 @@ const getRequestParams = (request) => {
 
 const parseCustParams = (custParamsString) => {
     const custParams = decodeURIComponent(custParamsString);
-    console.log(custParams);
     const custParamsItems = custParams.split("&");
     return custParamsItems.reduce((newParams, cpi) => {
         const [key, value] = cpi.split("=");
