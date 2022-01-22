@@ -1,5 +1,5 @@
 :root {
-  --main-padding: 1rem 2rem;
+  --main-padding: 0rem 2rem;
 }
 
 body {
@@ -34,11 +34,12 @@ button {
 header {
   font-size: 2rem;
   padding: var(--main-padding);
+  padding-top: 1rem;
 }
 
 .app {
   background-color: rgb(5,41,98);
-  min-height: calc(100vh - 2rem);
+  min-height: calc(100vh);
   font-size: calc(1rem);
   color: white;
 }

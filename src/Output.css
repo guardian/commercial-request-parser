@@ -6,6 +6,8 @@
 
 .output-container {
     padding: var(--main-padding);
+    padding-bottom: 2rem;
+    margin-top: 1rem;
 }
 
 .output-request-container {

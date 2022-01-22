@@ -36,17 +36,17 @@ input ~ label {
 
 .request-container > div {
     margin-bottom: 0.5rem;
-    font-style: italic;
 }
 
 #parse-button-container > button {
     margin-top: 1rem;
-    width: 8rem;
+    width: 6rem;
     height: 2rem;
     background: #4CAF50;
     border: none;
     color: rgba(255, 255, 255, 1);
     font-weight: normal;
+    font-family: inherit;
     text-align: center;
     text-decoration: none;
     display: inline-block;
