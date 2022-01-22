@@ -34,12 +34,8 @@ function Controls({
                     </textarea>
                 </div>
                 <div id="controls">
-                    <input type="radio" id="radio_type_youtube" name="radio_request_type" value="radio_type_youtube" defaultChecked />
-                    <label htmlFor="radio_type_youtube">YouTube embed request <span className="light">(e.g. https://www.youtube.com/embed/3LtcTkRMI1w?embed_config...)</span></label>
-                    <br></br>
-                    <input type="radio" id="radio_type_page_targeting" name="radio_request_type" value="radio_type_page_targeting" />
-                    <label htmlFor="radio_type_page_targeting">GAM Page Targeting <span className="light">(e.g. https://securepubads.g.doubleclick.net/gampad/ads?...)</span></label>
-                    <br></br>
+                    {/* https://www.youtube.com/embed/3LtcTkRMI1w?embed_config...)
+                    https://securepubads.g.doubleclick.net/gampad/ads?...) */}
                     <input type="checkbox" id="radio_truncate_values" name="radio_truncate_values" value="radio_truncate_values" defaultChecked />
                     <label htmlFor="radio_truncate">Truncate long values</label>
                     <br></br>

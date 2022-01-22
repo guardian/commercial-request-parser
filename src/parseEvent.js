@@ -15,7 +15,7 @@ function isGAMRequest(request) {
     }
 }
 
-function parseRequest(request, isYouTube, truncateValues, ignoreValues) {
+function parseRequest(request, truncateValues, ignoreValues) {
     if (request && request.trim().length > 0) {
         if (isYouTubeRequest(request)) {
             return parseYouTubeRequest(request, truncateValues, ignoreValues)
@@ -34,11 +34,10 @@ function parseEvent(event) {
     const request2 = [...event.target.elements].filter(t => t.id === "request-2")[0].value;
     const truncateValues = [...event.target.elements].filter(t => t.id === "radio_truncate_values")[0].checked;
     const ignoreValues = [...event.target.elements].filter(t => t.id === "radio_ignore_values")[0].checked;
-    const isYouTube = [...event.target.elements].filter(t => t.id === "radio_type_youtube")[0].checked;
 
     return [
-        parseRequest(request1, isYouTube, truncateValues, ignoreValues),
-        parseRequest(request2, isYouTube, truncateValues, ignoreValues),
+        parseRequest(request1, truncateValues, ignoreValues),
+        parseRequest(request2, truncateValues, ignoreValues),
     ];
 }
 
