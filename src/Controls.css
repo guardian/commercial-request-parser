@@ -53,3 +53,7 @@ input ~ label {
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
+
+#parse-button-container > button:active {
+    background: #449b47;
+}
