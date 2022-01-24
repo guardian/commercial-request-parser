@@ -18,7 +18,7 @@ function Controls({
                     <textarea
                         className="request"
                         id="request-1"
-                        rows="10"
+                        rows="5"
                         wrap="hard"
                         >
                     </textarea>
@@ -28,7 +28,7 @@ function Controls({
                     <textarea
                         className="request"
                         id="request-2"
-                        rows="10"
+                        rows="5"
                         wrap="hard"
                     >
                     </textarea>
