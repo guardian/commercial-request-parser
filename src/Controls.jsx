@@ -43,8 +43,8 @@ function Controls({
                     <input type="checkbox" id="radio_truncate_values" name="radio_truncate_values" value="radio_truncate_values" defaultChecked />
                     <label htmlFor="radio_truncate_values">Truncate long values</label>
                     <br></br>
-                    <input type="checkbox" id="radio_ignore_values" name="radio_ignore_values" value="radio_ignore_values" defaultChecked />
-                    <label htmlFor="radio_ignore_values">Ignore values</label>
+                    <input type="checkbox" id="radio_include_values" name="radio_include_values" value="radio_include_values" defaultChecked />
+                    <label htmlFor="radio_include_values">Include values</label>
                     <br></br>
                     <div id="parse-button-container">
                         <button type="submit">Parse</button>    
