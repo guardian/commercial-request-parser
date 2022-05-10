@@ -40,6 +40,46 @@ describe('YouTube request parser', () => {
             })
         );
     });
+    it('parses a valid request NOT with consent', () => {
+        const request = "https://www.youtube.com/embed/AE0xPBXxFkM?modestbranding=1&origin=https%3A%2F%2Fwww.theguardian.com&playsinline=1&rel=0&embed_config=%7B%22relatedChannels%22%3A%5B%5D%2C%22adsConfig%22%3A%7B%22adTagParameters%22%3A%7B%22iu%22%3A%22%2F59666047%2Ftheguardian.com%2Fpolitics%2Fliveblog%2Fng%22%2C%22cust_params%22%3A%22sens%253Df%2526si%253Df%2526vl%253D0%2526cc%253DUK%2526s%253Dpolitics%2526inskin%253Df%2526se%253Dpolitics-live-with-andrew-sparrow%2526ct%253Dliveblog%2526co%253Dandrewsparrow%252Carchie-bland%252Clisaocarroll%2526url%253D%25252Fpolitics%25252Flive%25252F2022%25252Fmay%25252F10%25252Fminister-says-queens-speech-will-tackle-hooligan-protesters-amid-concerns-non-tory-bills-left-out%2526su%253D4%252C5%252C1%252C2%252C3%2526edition%253Duk%2526tn%253Dminutebyminute%252Cnews%2526p%253Dng%2526k%253Deconomy%252Cpolitics%252Cconservatives%252Cqueens-speech%252Cuk%25252Fuk%252Cboris-johnson%252Ctradeunions%252Cnorthernireland%252Cireland%252Ceu-referendum%252Ckeir-starmer%252Clabour%2526sh%253Dhttps%25253A%25252F%25252Fwww.theguardian.com%25252Fp%25252Fydh4n%2526pa%253Df%2526urlkw%253Dminister%252Csays%252Cqueens%252Cspeech%252Cwill%252Ctackle%252Chooligan%252Cprotesters%252Camid%252Cconcerns%252Cnon%252Ctory%252Cbills%252Cleft%252Cout%2526permutive%253D%22%2C%22cmpGdpr%22%3A1%2C%22cmpGvcd%22%3A%221~%22%2C%22cmpVcd%22%3A%22CPYwK4APYwK4AAGABCENCOCgAAAAAAAAAAwIAAAAAAAA.YAAAAAAAAAAA%22%7D%2C%22nonPersonalizedAd%22%3Atrue%7D%7D&enablejsapi=1&widgetid=1";
+        const parsedRequest = parseYouTubeRequest(request);
+        const requestObject = JSON.parse(parsedRequest);
+        const embedConfig = requestObject.embed_config;
+        const adsConfig = embedConfig.adsConfig;
+        const adTagParameters = adsConfig.adTagParameters;
+        const custParams = adTagParameters.cust_params;
+        // consent
+        expect(adTagParameters).toEqual(
+            expect.objectContaining({
+                // cmpGdpr = consentState.tcfv2.gdprApplies
+                cmpGdpr: 1,
+                // cmpGvcd = consentState.tcfv2.addtlConsent
+                cmpGvcd: "1~",
+                // cmpVcd = consentState.tcfv2.tcString
+                cmpVcd: "CPYwK4APYwK4AAGABCENCOCgAAAAAAAAAAwIAAAAAAAA.YAAAAAAAAAAA",
+            })
+        );
+        expect(adsConfig.nonPersonalizedAd).toBe(true);
+        // cust_params
+        expect(custParams).toEqual(
+            expect.objectContaining({
+                k: ["economy", "politics", "conservatives", "queens-speech", "uk/uk", "boris-johnson", "tradeunions", "northernireland", "ireland", "eu-referendum", "keir-starmer", "labour"],
+                // TODO is this correct?
+                permutive: "",
+            })
+        );
+        // player config
+        expect(requestObject).toEqual(
+            expect.objectContaining({
+                enablejsapi: "1",
+                modestbranding: "1",
+                origin: "https://www.theguardian.com",
+                playsinline: "1",
+                rel: "0",
+                widgetid: "1"
+            })
+        );
+    });
 });
 
 describe('GAM request parser', () => {
