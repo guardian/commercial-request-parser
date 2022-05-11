@@ -98,6 +98,7 @@ describe('GAM request parser', () => {
         const parsedRequest = parseGAMRequest(request);
         const requestObject = JSON.parse(parsedRequest);
         const custParams = requestObject.cust_params;
+        const prevScp = requestObject.prev_scp;
         // consent
         expect(requestObject).toEqual(
             expect.objectContaining({
@@ -119,14 +120,12 @@ describe('GAM request parser', () => {
                 urlkw: "uk",
             })
         );
-        // targeting
-        // expect(requestObject).toEqual(
-        //     expect.objectContaining({
-        //         hb_pb: "1.38",
-        //         slot: "top-above-nav",
-        // url: "https://www.theguardian.com/uk",
-        // urlkw: "uk",
-        //     })
-        // );
+        // prev_scp
+        expect(prevScp).toEqual(
+            expect.objectContaining({
+                hb_pb: "1.38",
+                slot: "top-above-nav",
+            })
+        );
     });
 });
