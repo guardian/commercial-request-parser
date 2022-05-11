@@ -69,10 +69,6 @@ function isGAMRequest(request) {
     }
 }
 
-/**
- * When using dev tools to 'copy value' of a request Chrome will do a decode step over the request string
- * Detect this by looking at parts of the URL and check if decoded
- */
 
 const parseYouTubeRequest = (request, truncate, ignoreValues) => {
     let requestSummary = {};
