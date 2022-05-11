@@ -103,28 +103,30 @@ describe('GAM request parser', () => {
             expect.objectContaining({
                 // addtl_consent = consentState.tcfv2.addtlConsent
                 addtl_consent: "1~46.1301.70.1843.108.1878.440.3119.1097.196.202.89.2918.149.338.1205.2035.415.1415.2677.482.505.494.486.981.1456.89.2090",
-                cmp_interaction: "tcloaded",
-                consent_tcfv2: "t",
                 // gdpr = consentState.tcfv2.gdprApplies
                 gdpr: "1",
                 // gdpr_consent = consentState.tcfv2.tcString
                 gdpr_consent: "CPTHoTJPTHoTJAGABCENB-CgAP_AAG_AAAQ4IDtB9S7eTWMDeH5_Y7t0cYUX1R5_oeAijgEAF4IBwRKUIIwWEGAyJESIBqACEAYAIiJAIAdkGEAAAEAAYIABAAHIAEAEKAAAIAIEGAABAgIACAAIAAAAEAAQgAAUECAgiAAAcJYgSAAABAAAAAAAAAgEAAAAAgAAAAAAAAAAAAAAACgbRAhAAcABcAEIAOQAfgBkADQAG0ARwAkQBZgC5AHUAO6Ag4CEAERAJ2AT8ApYBbQC6wGAAYEAzIBrADXwHUAdUA7YB_wEPgJiAXaAxYBtAB4yAOAEwARwBHAEnAJiAWwAvMRAGAEMANkA1gB1QEOgMnEAAQASBIEwACwAKgAZAA5AB4AIAAZAA8gCIAIoATAAngBVADmAHoAPwAhABDACIAEcAJYATQApQBbgDZAHsAPgAfoBAwCOAEpANYAcQBDoCYgFsALzAYaAyQBk4QAEACQApYaAQAIYAbMBaAFpANYAdUBDoDGAGTioBAATABHAEcgLQAtICQQExALYAXmOgaAALAAqABkADkAHwAggBiAGQAPAAfQBEAEUAJgATwAqgBdAC-AGIAMwAcwA9AB-AEMAIgARwAlgBMACaAFGAKUAWIAtwBhADRAGyAPYAfoBAwCLAEcAJTAWgBaQC6gF5AOIAdQBDoCQQFsALtAXmAw0BjADJAGTjgAQAJABSEICwACwAMgAxACYAFUAL4AYgAzAB6AEcALEAYQBHACUwFoAWkA6gCQQEnALYAXaAycBwBAACAKQlAfAAWABkADgAHwAYgA8ACIAEwAKoAXwAxABmADaAIYARAAjgBRgClAFuAMIAbIBHIC0ALSAXUA6gCHQFsALtAXmAycBwBIACAKQpAoAAWABUADIAHIAPgBBADEAMgAeQBEAEUAJgATwApABVAC-AGIAMwAcwA_ACGAEQAKMAUoAsQBbgDCAGiANkAfoBFgCOAEpALyAh0BJwC2AF2gLzAYaAxgBkgDJygAIAEgApAAA.YAAAAAAAAAAA",
             })
-        );
-        // cust_params
+            );
+            // cust_params
         expect(custParams).toEqual(
             expect.objectContaining({
+                cmp_interaction: "tcloaded",
+                consent_tcfv2: "t",
                 permutive: expect.any(Array),
-            })
-        );
-        // targeting
-        expect(requestObject).toEqual(
-            expect.objectContaining({
-                hb_pb: "1.38",
-                slot: "top-above-nav",
-                url: "https://www.theguardian.com/uk",
+                url: "/uk",
                 urlkw: "uk",
             })
         );
+        // targeting
+        // expect(requestObject).toEqual(
+        //     expect.objectContaining({
+        //         hb_pb: "1.38",
+        //         slot: "top-above-nav",
+        // url: "https://www.theguardian.com/uk",
+        // urlkw: "uk",
+        //     })
+        // );
     });
 });
