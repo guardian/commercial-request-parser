@@ -107,6 +107,11 @@ const parseGAMRequest = (request, truncate, ignoreValues) => {
             const equalIndex = rp.indexOf("=");
             const custParamsString = rp.substring(equalIndex+1);
             requestSummary["cust_params"] = sortKeysAndTruncateValues(parseCustParams(custParamsString), truncate, ignoreValues);
+        }
+        else if (rp.startsWith("prev_scp")) {
+            const equalIndex = rp.indexOf("=");
+            const custParamsString = rp.substring(equalIndex+1);
+            requestSummary["prev_scp"] = sortKeysAndTruncateValues(parseCustParams(custParamsString), truncate, ignoreValues);
         } else {
             requestSummary[rp.substring(0, equalIndex)] = rp.substring(equalIndex+1);
         }
