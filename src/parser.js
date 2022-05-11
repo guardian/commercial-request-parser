@@ -25,7 +25,8 @@ const sortKeysAndTruncateValues = (obj, truncate, ignoreValues) =>
 const getRequestParams = (request, isDecoded) => {
     const requestPath = request.substring(request.indexOf("?") + 1);
     const requestPathDecoded = !isDecoded ? decodeURIComponent(requestPath) : requestPath;
-    return requestPathDecoded.split("&").map(decodeURIComponent);    
+    const requestParams = requestPathDecoded.split("&").map(decodeURIComponent);
+    return requestParams;
 }
 
 const parseCustParams = (custParamsString) => {
@@ -99,8 +100,8 @@ const parseYouTubeRequest = (request, truncate, ignoreValues) => {
 
 const parseGAMRequest = (request, truncate, ignoreValues) => {
     let requestSummary = {};
-    const isDecoded = !!request.includes('permutive=');
-    getRequestParams(request, isDecoded).forEach(rp => {
+    // GAM requests are not double encoded so don't decode the request
+    getRequestParams(request, true).forEach(rp => {
         const equalIndex = rp.indexOf("=");
         if (rp.startsWith("cust_params")) {
             const equalIndex = rp.indexOf("=");
