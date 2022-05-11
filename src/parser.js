@@ -99,7 +99,7 @@ const parseYouTubeRequest = (request, truncate, ignoreValues) => {
 
 const parseGAMRequest = (request, truncate, ignoreValues) => {
     let requestSummary = {};
-    const isDecoded = !!request.includes('cust_params=');
+    const isDecoded = !!request.includes('permutive=');
     getRequestParams(request, isDecoded).forEach(rp => {
         const equalIndex = rp.indexOf("=");
         if (rp.startsWith("cust_params")) {
