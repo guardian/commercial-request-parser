@@ -22,9 +22,9 @@ const sortKeysAndTruncateValues = (obj, truncate, ignoreValues) =>
         return result;
     }, {});
 
-const getRequestParams = (request) => {
-    const requestPathEncoded = request.substring(request.indexOf("?") + 1);
-    const requestPathDecoded = decodeURIComponent(requestPathEncoded);
+const getRequestParams = (request, isDecoded) => {
+    const requestPath = request.substring(request.indexOf("?") + 1);
+    const requestPathDecoded = !isDecoded ? decodeURIComponent(requestPath) : requestPath;
     return requestPathDecoded.split("&").map(decodeURIComponent);    
 }
 
@@ -73,24 +73,11 @@ function isGAMRequest(request) {
  * When using dev tools to 'copy value' of a request Chrome will do a decode step over the request string
  * Detect this by looking at parts of the URL and check if decoded
  */
-function isDecoded(request, type) {
-    if (type === 'youtube') {
-        if (request.includes('origin=https://')) {
-            return true;
-        }
-    }
-    if (type === 'gam') {
-        if (request.includes('cust_params=')) {
-            return true;
-        }
-    }
-    return false;
-}
 
 const parseYouTubeRequest = (request, truncate, ignoreValues) => {
     let requestSummary = {};
-
-    getRequestParams(request).forEach(rp => {
+    const isDecoded = !!request.includes('origin=https://');  
+    getRequestParams(request, isDecoded).forEach(rp => {
         const equalIndex = rp.indexOf("=");
         if (rp.startsWith("embed_config")) {
             const embedConfig = JSON.parse(rp.substring(equalIndex+1));
@@ -116,8 +103,8 @@ const parseYouTubeRequest = (request, truncate, ignoreValues) => {
 
 const parseGAMRequest = (request, truncate, ignoreValues) => {
     let requestSummary = {};
-
-    getRequestParams(request).forEach(rp => {
+    const isDecoded = !!request.includes('cust_params=');
+    getRequestParams(request, isDecoded).forEach(rp => {
         const equalIndex = rp.indexOf("=");
         if (rp.startsWith("cust_params")) {
             const equalIndex = rp.indexOf("=");
