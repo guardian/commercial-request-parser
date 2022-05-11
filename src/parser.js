@@ -49,6 +49,40 @@ const parseIfDefined = (obj, key, parseFn) => {
     return undefined;
 }
 
+function cleanRequest(request) {
+    return request
+        // Remove any leading / trailing whitespace
+        .trim()
+        // Remove leading string that may be included when copying from browser
+        .replace("Request URL: ", "");
+}
+
+function isYouTubeRequest(request) {
+    if (request.startsWith("https://www.youtube.com/embed/")) {
+        return true;
+    }
+}
+
+function isGAMRequest(request) {
+    if (request.startsWith("https://securepubads.g.doubleclick.net/gampad/ads")) {
+        return true;
+    }
+}
+
+function parseRequest(rawRequest, truncateValues, ignoreValues) {
+    const request = cleanRequest(rawRequest);
+    if (request && request.length > 0) {
+        if (isYouTubeRequest(request)) {
+            return parseYouTubeRequest(request, truncateValues, ignoreValues)
+        } else if (isGAMRequest(request)) {
+            return parseGAMRequest(request, truncateValues, ignoreValues);  
+        } else {
+            return "";
+        }
+    }
+    return "";
+}
+
 const parseYouTubeRequest = (request, truncate, ignoreValues) => {
     let requestSummary = {};
 
@@ -97,4 +131,5 @@ const parseGAMRequest = (request, truncate, ignoreValues) => {
 export {
     parseGAMRequest,
     parseYouTubeRequest,
+    parseRequest,
 }
