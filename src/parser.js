@@ -69,18 +69,22 @@ function isGAMRequest(request) {
     }
 }
 
-function parseRequest(rawRequest, truncateValues, ignoreValues) {
-    const request = cleanRequest(rawRequest);
-    if (request && request.length > 0) {
-        if (isYouTubeRequest(request)) {
-            return parseYouTubeRequest(request, truncateValues, ignoreValues)
-        } else if (isGAMRequest(request)) {
-            return parseGAMRequest(request, truncateValues, ignoreValues);  
-        } else {
-            return "";
+/**
+ * When using dev tools to 'copy value' of a request Chrome will do a decode step over the request string
+ * Detect this by looking at parts of the URL and check if decoded
+ */
+function isDecoded(request, type) {
+    if (type === 'youtube') {
+        if (request.includes('origin=https://')) {
+            return true;
         }
     }
-    return "";
+    if (type === 'gam') {
+        if (request.includes('cust_params=')) {
+            return true;
+        }
+    }
+    return false;
 }
 
 const parseYouTubeRequest = (request, truncate, ignoreValues) => {
@@ -126,6 +130,20 @@ const parseGAMRequest = (request, truncate, ignoreValues) => {
 
     requestSummary = sortKeysAndTruncateValues(requestSummary, truncate, ignoreValues);
     return JSON.stringify(requestSummary, null ,2);
+}
+
+function parseRequest(rawRequest, truncateValues, ignoreValues) {
+    const request = cleanRequest(rawRequest);
+    if (request && request.length > 0) {
+        if (isYouTubeRequest(request)) {
+            return parseYouTubeRequest(request, truncateValues, ignoreValues)
+        } else if (isGAMRequest(request)) {
+            return parseGAMRequest(request, truncateValues, ignoreValues);  
+        } else {
+            return "";
+        }
+    }
+    return "";
 }
 
 export {
