@@ -22,10 +22,11 @@ const sortKeysAndTruncateValues = (obj, truncate, ignoreValues) =>
         return result;
     }, {});
 
-const getRequestParams = (request) => {
-    const requestPathEncoded = request.substring(request.indexOf("?") + 1);
-    const requestPathDecoded = decodeURIComponent(requestPathEncoded);
-    return requestPathDecoded.split("&").map(decodeURIComponent);    
+const getRequestParams = (request, isDecoded) => {
+    const requestPath = request.substring(request.indexOf("?") + 1);
+    const requestPathDecoded = !isDecoded ? decodeURIComponent(requestPath) : requestPath;
+    const requestParams = requestPathDecoded.split("&").map(decodeURIComponent);
+    return requestParams;
 }
 
 const parseCustParams = (custParamsString) => {
@@ -49,10 +50,31 @@ const parseIfDefined = (obj, key, parseFn) => {
     return undefined;
 }
 
+function cleanRequest(request) {
+    return request
+        // Remove any leading / trailing whitespace
+        .trim()
+        // Remove leading string that may be included when copying from browser
+        .replace("Request URL: ", "");
+}
+
+function isYouTubeRequest(request) {
+    if (request.startsWith("https://www.youtube.com/embed/")) {
+        return true;
+    }
+}
+
+function isGAMRequest(request) {
+    if (request.startsWith("https://securepubads.g.doubleclick.net/gampad/ads")) {
+        return true;
+    }
+}
+
+
 const parseYouTubeRequest = (request, truncate, ignoreValues) => {
     let requestSummary = {};
-
-    getRequestParams(request).forEach(rp => {
+    const isDecoded = !!request.includes('origin=https://');  
+    getRequestParams(request, isDecoded).forEach(rp => {
         const equalIndex = rp.indexOf("=");
         if (rp.startsWith("embed_config")) {
             const embedConfig = JSON.parse(rp.substring(equalIndex+1));
@@ -78,13 +100,18 @@ const parseYouTubeRequest = (request, truncate, ignoreValues) => {
 
 const parseGAMRequest = (request, truncate, ignoreValues) => {
     let requestSummary = {};
-
-    getRequestParams(request).forEach(rp => {
+    // GAM requests are not double encoded so don't decode the request
+    getRequestParams(request, true).forEach(rp => {
         const equalIndex = rp.indexOf("=");
         if (rp.startsWith("cust_params")) {
             const equalIndex = rp.indexOf("=");
             const custParamsString = rp.substring(equalIndex+1);
             requestSummary["cust_params"] = sortKeysAndTruncateValues(parseCustParams(custParamsString), truncate, ignoreValues);
+        }
+        else if (rp.startsWith("prev_scp")) {
+            const equalIndex = rp.indexOf("=");
+            const custParamsString = rp.substring(equalIndex+1);
+            requestSummary["prev_scp"] = sortKeysAndTruncateValues(parseCustParams(custParamsString), truncate, ignoreValues);
         } else {
             requestSummary[rp.substring(0, equalIndex)] = rp.substring(equalIndex+1);
         }
@@ -94,7 +121,22 @@ const parseGAMRequest = (request, truncate, ignoreValues) => {
     return JSON.stringify(requestSummary, null ,2);
 }
 
+function parseRequest(rawRequest, truncateValues, ignoreValues) {
+    const request = cleanRequest(rawRequest);
+    if (request && request.length > 0) {
+        if (isYouTubeRequest(request)) {
+            return parseYouTubeRequest(request, truncateValues, ignoreValues)
+        } else if (isGAMRequest(request)) {
+            return parseGAMRequest(request, truncateValues, ignoreValues);  
+        } else {
+            return "";
+        }
+    }
+    return "";
+}
+
 export {
     parseGAMRequest,
     parseYouTubeRequest,
+    parseRequest,
 }
