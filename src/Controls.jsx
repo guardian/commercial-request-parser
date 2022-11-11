@@ -18,7 +18,7 @@ function parseEvent(event) {
 
 function HelperText() {
     return (
-        <span className="light">can be a GAM ('https://securepubads.g.doubleclick.net/gampad/ads?...') or YouTube ('https://www.youtube.com/embed/...') request</span>
+        <span className="light">can be a GAM ('https://[secure]pubads.g.doubleclick.net/gampad/ads?...') or YouTube ('https://www.youtube.com/embed/...') request</span>
     );
 };
 
