@@ -70,7 +70,6 @@ function isGAMRequest(request) {
     }
 }
 
-
 const parseYouTubeRequest = (request, truncate, ignoreValues) => {
     let requestSummary = {};
     const isDecoded = !!request.includes('origin=https://');  
@@ -129,7 +128,7 @@ function parseRequest(rawRequest, truncateValues, ignoreValues) {
         } else if (isGAMRequest(request)) {
             return parseGAMRequest(request, truncateValues, ignoreValues);  
         } else {
-            return "";
+            return "Not a recognised URL";
         }
     }
     return "";
