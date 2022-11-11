@@ -110,7 +110,7 @@ describe('GAM request parser', () => {
                 gdpr_consent: "CPTHoTJPTHoTJAGABCENB-CgAP_AAG_AAAQ4IDtB9S7eTWMDeH5_Y7t0cYUX1R5_oeAijgEAF4IBwRKUIIwWEGAyJESIBqACEAYAIiJAIAdkGEAAAEAAYIABAAHIAEAEKAAAIAIEGAABAgIACAAIAAAAEAAQgAAUECAgiAAAcJYgSAAABAAAAAAAAAgEAAAAAgAAAAAAAAAAAAAAACgbRAhAAcABcAEIAOQAfgBkADQAG0ARwAkQBZgC5AHUAO6Ag4CEAERAJ2AT8ApYBbQC6wGAAYEAzIBrADXwHUAdUA7YB_wEPgJiAXaAxYBtAB4yAOAEwARwBHAEnAJiAWwAvMRAGAEMANkA1gB1QEOgMnEAAQASBIEwACwAKgAZAA5AB4AIAAZAA8gCIAIoATAAngBVADmAHoAPwAhABDACIAEcAJYATQApQBbgDZAHsAPgAfoBAwCOAEpANYAcQBDoCYgFsALzAYaAyQBk4QAEACQApYaAQAIYAbMBaAFpANYAdUBDoDGAGTioBAATABHAEcgLQAtICQQExALYAXmOgaAALAAqABkADkAHwAggBiAGQAPAAfQBEAEUAJgATwAqgBdAC-AGIAMwAcwA9AB-AEMAIgARwAlgBMACaAFGAKUAWIAtwBhADRAGyAPYAfoBAwCLAEcAJTAWgBaQC6gF5AOIAdQBDoCQQFsALtAXmAw0BjADJAGTjgAQAJABSEICwACwAMgAxACYAFUAL4AYgAzAB6AEcALEAYQBHACUwFoAWkA6gCQQEnALYAXaAycBwBAACAKQlAfAAWABkADgAHwAYgA8ACIAEwAKoAXwAxABmADaAIYARAAjgBRgClAFuAMIAbIBHIC0ALSAXUA6gCHQFsALtAXmAycBwBIACAKQpAoAAWABUADIAHIAPgBBADEAMgAeQBEAEUAJgATwApABVAC-AGIAMwAcwA_ACGAEQAKMAUoAsQBbgDCAGiANkAfoBFgCOAEpALyAh0BJwC2AF2gLzAYaAxgBkgDJygAIAEgApAAA.YAAAAAAAAAAA",
             })
             );
-            // cust_params
+        // cust_params
         expect(custParams).toEqual(
             expect.objectContaining({
                 cmp_interaction: "tcloaded",
@@ -125,6 +125,36 @@ describe('GAM request parser', () => {
             expect.objectContaining({
                 hb_pb: "1.38",
                 slot: "top-above-nav",
+            })
+        );
+    });
+
+    it('parses a valid IMA request with consent', () => {
+        const request = "https://pubads.g.doubleclick.net/gampad/ads?iu=%2F59666047%2Ftheguardian.com%2Fnews%2Farticle%2Fng&tfcd=0&npa=0&sz=480x360%7C480x361%7C400x300&gdfp_req=1&output=xml_vast4&unviewed_position_start=1&env=vp&vad_type=linear&vpos=preroll&cust_params=sens%3Df%26si%3Df%26cc%3DGB%26s%3Dnews%26inskin%3Dt%26se%3Duber-files%26ct%3Darticle%26su%3D0%26edition%3Duk%26tn%3Dfeatures%252Cnews%26p%3Dng%26k%3Duber%252Ctechnology%26sh%3Dhttps%253A%252F%252Fwww.theguardian.com%252Fp%252Fyycmd%26co%3Dsimongoodley%252Cfelicitylawrence%252Cpaullewis%252Clisaocarroll%252Charry-davies%26url%3D%252Fnews%252F2022%252Fjul%252F11%252Fuber-files-whistleblower-lobbyist-mark-macgann%26pa%3Dt%26urlkw%3Duber%252Cfiles%252Cwhistleblower%252Clobbyist%252Cmark%252Cmacgann%26amtgrp%3D12%26fr%3D10-15%26permutive%3D23527%252C24656%252C25079%252C25367%252C28985%252C33392%252C47834%252C54952%252C56848%252C80377%26cmp_interaction%3Dtcloaded%26consent_tcfv2%3Dt%26rdp%3Dna%26dcre%3Dt%26rp%3Ddotcom-rendering%26at%3Dfixed-puppies%26pv%3Dlabb7ff98m0hnrpcpokm%26bp%3Dtablet%26skinsize%3Ds%26yt_embed_ima%3D1&vid=A14Vls_Y6ck&vpa=click&vpmute=0&sdkv=h.3.543.0&osd=2&frm=0&vis=1&sdr=1&hl=en&is_amp=0&uach=WyJtYWNPUyIsIjEwLjE1LjciLCJ4ODYiLCIiLCIxMDYuMC41MjQ5LjExOSIsW10sZmFsc2UsbnVsbCwiNjQiLFtbIkNocm9taXVtIiwiMTA2LjAuNTI0OS4xMTkiXSxbIkdvb2dsZSBDaHJvbWUiLCIxMDYuMC41MjQ5LjExOSJdLFsiTm90O0E9QnJhbmQiLCI5OS4wLjAuMCJdXSxmYWxzZV0.&u_so=l&ctv=0&gdpr=1&gdpr_consent=CPiOnYAPiOnYAAGABCENCpCgAP_AAG_AACiQIctB9S7eTWMDeH5_Ybt0cYUX1Rp3oOAiDgEAE4IBwBKUIIwWEGAyJESIBqACEAYAIiJAIANkGEAAAEAAYIABAAHIAEAEIAAAIAIEEAABAgIACAAIAAAAEAAQgAAUECAgiAAAcJYgSAAABAAAAAAAAAgEAIAAAgAAAAAAAAAAAAAAACgAAAAAAAIG0QGwAHAAXAByAD8ANAAbQBHACRAFyAO6Ag4CEAERAJ-AUsAtoBdYDAAMCAZkA1gBr4DqAOqAdsA_4CYgF2gMWAbQAeMgDABMAEcARwBJwC2AF5iIBIADgAoACGAGyAVkA1gB1QEOgMnEAAQASBIEwACwAKgAZAA5AB4AIAAZAA8gCIAIoATIAngCgAFUAOYAegA_ACEAEMAIgARwAlgBNAClgFuAXAA2QB7AD4AH6AQMAjgBKQCsgGsAOIAh0BbAC8wGGgMkAZOEABgAbABIAUsNAJAAcAIYAbIBWYC0ALSAawA6oCHQGTioAwATABHAEcgLQAtIC2AF5joGYACwAKgAZAA5AB8AIIAYgBkADwAH0ARABFACZAE8AUAAqgBdADEAGYAOYAegA_ACGAEQAJYATAAmgBRgClAFjALcAuABhADRAGyAPYAfoBAwCLAEcAJSAVmAtAC0gF1ALyAcQA6gCHQFsALtAXmAw0BkgDJwHFgQ5HAAgASACkIQFgAFgAZABiAEwAKoAYgAzAB6AEcAKUAWIAwgCOAEpAKzAWgBaQDqAJOAWwAu0Bk4DgCAAEAUhKA-AAsADIAHAAPgAxAB4AEQAJgAUAAqgBiADMAIYARAAjgBRgClAFuAMIAbIBHACswFoAWkAuoB1AEOgLYAXaAvMBk4DgCQAEAUhSBOAAsACoAGQAOQAfACCAGIAZAA8gCIAIoATIAngCgAFIAKoAYgAzABzAD8AIYARAAowBSgCxAFuAMIAaIA2QB-gEWAI4ASkArIBeQEOgJOAWwAu0BeYDDQGSAMnKAAgASACkAA.YAAAAAAAAAAA&addtl_consent=1~2090.1577.46.70.1301.1843.108.1878.440.1097.3119.196.202.89.89.2918.149.338.1205.1415.415.2035.486.494.505.482.2677.981.1456&sdki=445&ptt=20&adk=3754529493&sdk_apis=2%2C7%2C8&omid_p=Google1%2Fh.3.543.0&sid=3BD0CE61-A098-4ECF-A232-1852FE625AF7&nel=0&eid=44748969%2C44765701&url=https%3A%2F%2Fm.thegulocal.com%2Fnews%2F2022%2Fjul%2F11%2Fuber-files-whistleblower-lobbyist-mark-macgann%3Fadtest%3Dfixed-puppies%23ab-IntegrateIMA%3Dvariant&dt=1668099363210&cookie=ID%3Db670689c7009c166-22053f6424d70002%3AT%3D1668092789%3AS%3DALNI_MYYZxXM1MMx6mrcOkbnjXrRJ5TAUQ&gpic=UID%3D00000b1e1de7f984%3AT%3D1668092789%3ART%3D1668092789%3AS%3DALNI_MZeVq15RM-TNHOFyJkWP1-LoKYb_g&correlator=2409046006693692&scor=3173095377399474&ged=ve4_td143_tt0_pd143_la143000_er2112.0.2112.0_vi2112.0.3534.945_vp0_eb16491";
+        const parsedRequest = parseGAMRequest(request);
+        const requestObject = JSON.parse(parsedRequest);
+        const custParams = requestObject.cust_params;
+        const prevScp = requestObject.prev_scp;
+        // consent
+        expect(requestObject).toEqual(
+            expect.objectContaining({
+                // addtl_consent = consentState.tcfv2.addtlConsent
+                addtl_consent: "1~2090.1577.46.70.1301.1843.108.1878.440.1097.3119.196.202.89.89.2918.149.338.1205.1415.415.2035.486.494.505.482.2677.981.1456",
+                // gdpr = consentState.tcfv2.gdprApplies
+                gdpr: "1",
+                // gdpr_consent = consentState.tcfv2.tcString
+                gdpr_consent: "CPiOnYAPiOnYAAGABCENCpCgAP_AAG_AACiQIctB9S7eTWMDeH5_Ybt0cYUX1Rp3oOAiDgEAE4IBwBKUIIwWEGAyJESIBqACEAYAIiJAIANkGEAAAEAAYIABAAHIAEAEIAAAIAIEEAABAgIACAAIAAAAEAAQgAAUECAgiAAAcJYgSAAABAAAAAAAAAgEAIAAAgAAAAAAAAAAAAAAACgAAAAAAAIG0QGwAHAAXAByAD8ANAAbQBHACRAFyAO6Ag4CEAERAJ-AUsAtoBdYDAAMCAZkA1gBr4DqAOqAdsA_4CYgF2gMWAbQAeMgDABMAEcARwBJwC2AF5iIBIADgAoACGAGyAVkA1gB1QEOgMnEAAQASBIEwACwAKgAZAA5AB4AIAAZAA8gCIAIoATIAngCgAFUAOYAegA_ACEAEMAIgARwAlgBNAClgFuAXAA2QB7AD4AH6AQMAjgBKQCsgGsAOIAh0BbAC8wGGgMkAZOEABgAbABIAUsNAJAAcAIYAbIBWYC0ALSAawA6oCHQGTioAwATABHAEcgLQAtIC2AF5joGYACwAKgAZAA5AB8AIIAYgBkADwAH0ARABFACZAE8AUAAqgBdADEAGYAOYAegA_ACGAEQAJYATAAmgBRgClAFjALcAuABhADRAGyAPYAfoBAwCLAEcAJSAVmAtAC0gF1ALyAcQA6gCHQFsALtAXmAw0BkgDJwHFgQ5HAAgASACkIQFgAFgAZABiAEwAKoAYgAzAB6AEcAKUAWIAwgCOAEpAKzAWgBaQDqAJOAWwAu0Bk4DgCAAEAUhKA-AAsADIAHAAPgAxAB4AEQAJgAUAAqgBiADMAIYARAAjgBRgClAFuAMIAbIBHACswFoAWkAuoB1AEOgLYAXaAvMBk4DgCQAEAUhSBOAAsACoAGQAOQAfACCAGIAZAA8gCIAIoATIAngCgAFIAKoAYgAzABzAD8AIYARAAowBSgCxAFuAMIAaIA2QB-gEWAI4ASkArIBeQEOgJOAWwAu0BeYDDQGSAMnKAAgASACkAA.YAAAAAAAAAAA",
+            })
+            );
+        // cust_params
+        expect(custParams).toEqual(
+            expect.objectContaining({
+                at: 'fixed-puppies',
+                cmp_interaction: "tcloaded",
+                consent_tcfv2: "t",
+                permutive: expect.any(Array),
+                url: "/news/2022/jul/11/uber-files-whistleblower-lobbyist-mark-macgann",
+                urlkw: ["uber", "files", "whistleblower", "lobbyist", "mark", "macgann"],
             })
         );
     });
