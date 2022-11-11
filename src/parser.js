@@ -62,7 +62,7 @@ const isYouTubeRequest = (request) =>
     request.startsWith("https://www.youtube.com/embed/");
 
 const isGAMRequest = (request) =>
-    request.startsWith("https://securepubads.g.doubleclick.net/gampad/ads");
+    !!request.match(/https:\/\/[secure]*?pubads\.g\.doubleclick\.net\/gampad\/ads/);
 
 const parseYouTubeRequest = (request, truncate, ignoreValues) => {
     let requestSummary = {};

@@ -101,6 +101,8 @@ describe('GAM request parser', () => {
     it('recognises a GAM request', () => {
         // regular GAM
         expect(isGAMRequest("https://securepubads.g.doubleclick.net/gampad/ads")).toBe(true);
+        // IMA
+        expect(isGAMRequest("https://pubads.g.doubleclick.net/gampad/ads")).toBe(true);
         expect(isGAMRequest("https://securepubads.g.doubleclick.net/gampad")).toBe(false);
         expect(isGAMRequest("https://doubleclick.net/gampad")).toBe(false);
     });
