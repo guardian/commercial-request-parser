@@ -58,18 +58,11 @@ function cleanRequest(request) {
         .replace("Request URL: ", "");
 }
 
-function isYouTubeRequest(request) {
-    if (request.startsWith("https://www.youtube.com/embed/")) {
-        return true;
-    }
-}
+const isYouTubeRequest = (request) =>
+    request.startsWith("https://www.youtube.com/embed/");
 
-function isGAMRequest(request) {
-    if (request.startsWith("https://securepubads.g.doubleclick.net/gampad/ads")) {
-        return true;
-    }
-}
-
+const isGAMRequest = (request) =>
+    !!request.match(/https:\/\/[secure]*?pubads\.g\.doubleclick\.net\/gampad\/ads/);
 
 const parseYouTubeRequest = (request, truncate, ignoreValues) => {
     let requestSummary = {};
@@ -129,13 +122,15 @@ function parseRequest(rawRequest, truncateValues, ignoreValues) {
         } else if (isGAMRequest(request)) {
             return parseGAMRequest(request, truncateValues, ignoreValues);  
         } else {
-            return "";
+            return "Not a recognised URL";
         }
     }
     return "";
 }
 
 export {
+    isGAMRequest,
+    isYouTubeRequest,
     parseGAMRequest,
     parseYouTubeRequest,
     parseRequest,
