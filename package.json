@@ -14,12 +14,12 @@
     "react-tabs": "^3.2.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.10",
-    "@babel/preset-env": "^7.17.10",
+    "@babel/core": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
     "@vitejs/plugin-react": "^1.0.7",
-    "babel-jest": "^28.1.0",
-    "jest": "^28.1.0",
-    "vite": "^2.9.13"
+    "babel-jest": "^30.0.1",
+    "jest": "^30.0.1",
+    "vite": "^6.3.5"
   },
   "packageManager": "yarn@1.22.22"
 }
