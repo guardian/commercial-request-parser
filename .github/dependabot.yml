@@ -34,7 +34,6 @@ updates:
       dev-dependencies:
         dependency-type: "development"
         exclude-patterns:
-          - "react*"
           - "jest"
           - "*babel*"
           - "vite*"
