@@ -14,7 +14,7 @@
     "react-tabs": "^3.2.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.5",
+    "@babel/core": "^7.29.6",
     "@babel/preset-env": "^7.28.5",
     "@vitejs/plugin-react": "^1.0.7",
     "babel-jest": "^30.2.0",
