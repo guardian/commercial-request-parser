@@ -1,4 +1,4 @@
-import ReactDiffViewer from 'react-diff-viewer';
+import ReactDiffViewer from 'react-diff-viewer-continued';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import './Output.css'
@@ -23,7 +23,7 @@ function Output({ parsed: [ parsed1, parsed2 ] }) {
                         > 
                             {parsed1}
                         </textarea>
-                        <div className="copy" title="Copy" onClick={() => {navigator.clipboard.writeText(parsed1)}}>📋</div>
+                        <button className="copy" title="Copy" onClick={() => {navigator.clipboard.writeText(parsed1)}}>📋</button>
                     </div>
                 </TabPanel>
                 <TabPanel>
@@ -36,7 +36,7 @@ function Output({ parsed: [ parsed1, parsed2 ] }) {
                             value={parsed2}
                         >
                         </textarea>
-                        <div class="copy" title="Copy" onClick={() => {navigator.clipboard.writeText(parsed2)}}>📋</div>
+                        <button className="copy" title="Copy" onClick={() => {navigator.clipboard.writeText(parsed2)}}>📋</button>
                     </div>
                 </TabPanel>
                 <TabPanel>
