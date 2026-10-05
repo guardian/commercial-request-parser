@@ -1,4 +1,4 @@
-import ReactDiffViewer from 'react-diff-viewer';
+import ReactDiffViewer from 'react-diff-viewer-continued';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import './Output.css'
