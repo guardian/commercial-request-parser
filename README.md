@@ -17,22 +17,22 @@ Copy the URL and paste it into the parser tool to see the key values in a more h
 
 ## Development / Running Locally
 
-Once you've cloned the repo, ensure you are using the correct version of Node (see `./nvmrc`) and then install using `yarn`:
+Once you've cloned the repo, ensure you are using the correct version of Node (see `./nvmrc`) and then install using `pnpm`:
 
 ```sh
-yarn install
+pnpm install
 ```
 
 To run the app locally:
 
 ```sh
-yarn dev
+pnpm dev
 ```
 
 To create a production build:
 
 ```sh
-yarn build
+pnpm build
 ```
 
 
