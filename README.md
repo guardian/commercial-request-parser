@@ -41,8 +41,3 @@ pnpm build
 This project is deployed to Github Pages via a Github Workflow that runs on each merge to the main branch
 
 The deployed page can be found here: https://guardian.github.io/commercial-request-parser/
-
-
-## Current issues
-
-- The _diff_ view on Github Pages does not work properly. See https://github.com/guardian/commercial-request-parser/issues/23. You can still use the _diff_ functionality by running locally.
