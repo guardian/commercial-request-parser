@@ -15,8 +15,8 @@
     "react-tabs": "6.1.1"
   },
   "devDependencies": {
-    "@babel/core": "8.0.6",
-    "@babel/preset-env": "8.0.6",
+    "@babel/core": "8.0.7",
+    "@babel/preset-env": "8.0.7",
     "@vitejs/plugin-react": "6.1.1",
     "babel-jest": "30.5.2",
     "jest": "30.5.2",
