@@ -20,7 +20,7 @@
     "@vitejs/plugin-react": "6.1.1",
     "babel-jest": "30.5.2",
     "jest": "30.5.2",
-    "vite": "8.3.2"
+    "vite": "8.3.3"
   },
   "packageManager": "pnpm@12.9.1"
 }
